@@ -3,18 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <title>Geek Lexicon</title>
-  <script src="Resources/jquery.js"></script>
+  <script src="Resources/jquery-3.2.1.js"></script>
   <script src="Resources/main.js"></script>
   <link rel="stylesheet" href="Resources/styles.css">
 </head>
 <body>
-  <h1>It Runs Stuff</h1>
-  <button class="uiButton" id="rerunButton">Add/Revise</button>
-  <button class="uiButton" id="searchButton">Lookup</button>
-  <hr>
-  <input class="jsLog" type="text" id="wordField" placeholder='Word'><br>
-  <!-- <input class="jsLog definitionBox" type="text" id="Definition" placeholder='Definition'> -->
-  <textarea class="jsLog definitionBox" id="defField" rows="10" cols="50" placeholder="Definition..."></textarea>
-  <!-- <div id="scrollbox" style="overflow-y:scroll; height:400px;"> -->
+  <div id="mainStuff">
+    <h1>It Runs Stuff</h1>
+    <button class="uiButton" id="rerunButton">Add/Revise</button>
+    <button class="uiButton" id="searchButton">Lookup</button>
+    <hr>
+    <input class="jsLog" type="text" id="wordField" placeholder='Term'><br><br>
+    <!-- <input class="jsLog definitionBox" type="text" id="Definition" placeholder='Definition'> -->
+    <textarea class="jsLog" id="defField" rows="6" cols="50" placeholder="Definition..."></textarea>
+    <!-- <div id="scrollbox" style="overflow-y:scroll; height:400px;"> -->
+    <div id="scrollbox">
+  </div>
+
+  <div id="verifyPopup" class="popupDiv">
+
+    <div style="background-color: white; height:100%; width: 100%">
+      <br>
+      <p>It appears this entry exists. Overwrite?</p>
+      <button class="uiButton" id="confirmOverwriteButton">Overwrite</button>
+      <button class="uiButton" id="cancelOverwriteButton">Cancel</button>
+    </div>
+  </div>
 </body>
 </html>

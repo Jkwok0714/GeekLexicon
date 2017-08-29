@@ -1,10 +1,38 @@
 h1 {
   font-family: verdana;
+  color: #9cbbed;
 }
-.jsLog, .uiButton {
-  color: #4286f4;
+p, .jsLog, .uiButton {
+  color: #253959;
   font-family: verdana;
-  font-size: 9px;
+  font-size: 10px;
+  margin: auto;
+}
+
+#wordField {
+  font-size: 18px;
+}
+
+body > div {
+  position: absolute;
+  height: 100%;
+  width: 40%;
+  top: 50%;
+  left: 50%;
+  background-color: #253959;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  text-align: center;
+}
+
+.popupDiv {
+  z-index: 1;
+  width: 60%;
+  border: 1px solid white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .helperLog {
@@ -13,11 +41,24 @@ h1 {
   font-size: 8px;
 }
 .themeBreak {
-  color: #4286f4;
+  color: #253959;
   font-family: verdana;
   font-weight: 'bold';
 }
 
-.definitionBox {
-  height: 60%;
+.invisible {
+  visibility: hidden;
+}
+
+#defField {
+  height: 40%;
+}
+
+#scrollbox {
+  margin: auto;
+  border: 1px solid white;
+  overflow-y:scroll;
+  top: 90%;
+  width: 70%;
+  height: 20%;
 }
