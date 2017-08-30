@@ -8,13 +8,29 @@ var main = function() {
 //====== Helper Functions======
 
 var jQueryStuff = function() {
-  $('#cancelOverwriteButton').on('click', function() {
-    $('#verifyPopup').addClass('invisible');
+  $('#cancelButton').on('click', function() {
+    $('.popupDiv').addClass('invisible');
   });
 
-  $('#addButton').on('click', () => {
+  $('#addButton').on('click', function() {
+    $('#addTermPopup').removeClass('invisible');
+
+  });
+  $('#reviseButton').on('click', function() {
+    console.log($('#defField').text());
+    if ($('#defField').text() === '' || $('#defField').text() === undefined) {
+      alert('No current term selected! Please select/search a term.');
+      return;
+    }
+    $('#addTermPopup').removeClass('invisible');
+    $('#wordField').val($('#searchField').val());
+    $('#defInputField').val($('#defField').text());
+  });
+
+
+  $('#addTermButton').on('click', () => {
     var term = $('#wordField').val();
-    var definition = $('#defField').val();
+    var definition = $('#defInputField').val();
     if (term === '' || definition === '') {
       alert('Attempted to add empty values!\nTerm: ' + term + '\nDefinition: ' + definition);
       return;
@@ -29,28 +45,29 @@ var jQueryStuff = function() {
     storage[term] = definition;
     clearTextFields();
     writeStorage();
+    $('#addTermPopup').addClass('invisible');
   });
 
   $('#searchButton').on('click', () => {
-    var term = $('#wordField').val();
+    var term = $('#searchField').val();
     if (term === '') {
       alert('Enter a search term!');
     } else if (storage[term] === undefined) {
       alert('Term \'' + term + '\' not found!');
     } else {
-      $('#defField').val(storage[term]);
+      $('#defField').text(storage[term]);
     }
   });
 
   $('#scrollbox').on('click', '.termButton', function() {
     var term = $(this).text();
     // console.log('Clicked a term:', $(this).text());
-    $('#defField').val(storage[term]);
-    $('#wordField').val(term);
+    $('#defField').text(storage[term]);
+    $('#searchField').val(term);
   });
 
   $('#removeButton').on('click', () => {
-    var term = ($('#wordField').val());
+    var term = ($('#searchField').val());
     if (storage[term] === undefined) {
       alert('Term \'' + term + '\' not found!');
     } else {

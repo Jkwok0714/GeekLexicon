@@ -20,10 +20,14 @@ var displayStoredItem = function(itemName) {
   $textBit.prependTo($body);
 };
 
-var initiateTextFields = function() {
+var clearTextFields = function() {
   $('#wordField').val('');
-  $('#defField').val('');
+  $('#defInputField').val('');
 };
+
+var initiateTextFields = function() {
+  clearTextFields();
+}
 
 var clearStorage = function() {
   storage = {};

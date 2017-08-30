@@ -65,14 +65,18 @@ body > div {
 }
 
 #defField {
-  height: 40%;
+  height: 30%;
+  text-justify: center;
 }
 
-#scrollbox {
+.textField {
   margin: auto;
   border: 1px solid white;
   overflow-y:scroll;
-  top: 90%;
   width: 70%;
+}
+
+#scrollbox {
   height: 20%;
+  top: 90%;
 }

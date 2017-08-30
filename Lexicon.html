@@ -12,25 +12,38 @@
   <div id="mainStuff">
     <h1>The Geekicon</h1>
     <p style="color: #9cbbed">A Lexicon of Geekology</p>
-    <button class="uiButton" id="addButton">Add/Revise</button>
+    <button class="uiButton" id="addButton">Add</button>
+    <button class="uiButton" id="reviseButton">Revise</button>
     <button class="uiButton" id="searchButton">Lookup</button>
     <button class="uiButton" id="removeButton">Remove</button>
     <hr>
-    <input class="jsLog" type="text" id="wordField" placeholder='Term'><br><br>
+    <input class="jsLog" type="text" id="searchField" placeholder='Term'><br><br>
     <!-- <input class="jsLog definitionBox" type="text" id="Definition" placeholder='Definition'> -->
-    <textarea class="jsLog" id="defField" rows="6" cols="50" placeholder="Definition..."></textarea>
+    <div class="jsLog2 textField" id="defField" placeholder="Definition..."></div>
     <!-- <div id="scrollbox" style="overflow-y:scroll; height:400px;"> -->
     <br>
     <span class="jsLog2">Added terms:</span>
-    <div id="scrollbox"></div>
+    <div id="scrollbox" class="textField"></div>
+  </div>
+
+  <div id="addTermPopup" class="popupDiv">
+    <div style="background-color: white; height:80%; width: 100%">
+      <br>
+      <input class="jsLog" type="text" id="wordField" placeholder='Term'><br><br>
+      <!-- <input class="jsLog definitionBox" type="text" id="Definition" placeholder='Definition'> -->
+      <textarea class="jsLog" id="defInputField" rows="6" cols="50" placeholder="Definition..."></textarea>
+      <br>
+      <button class="uiButton" id="addTermButton">Add/Revise</button>
+      <button class="uiButton" id="cancelButton">Cancel</button>
+    </div>
   </div>
 
   <div id="verifyPopup" class="popupDiv">
-    <div style="background-color: white; height:100%; width: 100%">
+    <div style="background-color: white; height:80%; width: 100%">
       <br>
       <p>It appears this entry exists. Overwrite?</p>
       <button class="uiButton" id="confirmOverwriteButton">Overwrite</button>
-      <button class="uiButton" id="cancelOverwriteButton">Cancel</button>
+      <button class="uiButton" id="cancelButton">Cancel</button>
     </div>
   </div>
 </body>
