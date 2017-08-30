@@ -1,12 +1,24 @@
 h1 {
   font-family: verdana;
   color: #9cbbed;
+  text-shadow: 2px 2px 8px #071328;
 }
 p, .jsLog, .uiButton {
   color: #253959;
   font-family: verdana;
   font-size: 10px;
   margin: auto;
+}
+
+.jsLog2 {
+  color: #9cbbed;
+  font-family: verdana;
+  font-size: 10px;
+  margin: auto;
+}
+
+.reddified {
+  color: red;
 }
 
 #wordField {

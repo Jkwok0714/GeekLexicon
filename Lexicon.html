@@ -9,19 +9,22 @@
 </head>
 <body>
   <div id="mainStuff">
-    <h1>It Runs Stuff</h1>
-    <button class="uiButton" id="rerunButton">Add/Revise</button>
+    <h1>The Geekicon</h1>
+    <p style="color: #9cbbed">A Lexicon of Geekology</p>
+    <button class="uiButton" id="addButton">Add/Revise</button>
     <button class="uiButton" id="searchButton">Lookup</button>
+    <button class="uiButton" id="removeButton">Remove</button>
     <hr>
     <input class="jsLog" type="text" id="wordField" placeholder='Term'><br><br>
     <!-- <input class="jsLog definitionBox" type="text" id="Definition" placeholder='Definition'> -->
     <textarea class="jsLog" id="defField" rows="6" cols="50" placeholder="Definition..."></textarea>
     <!-- <div id="scrollbox" style="overflow-y:scroll; height:400px;"> -->
-    <div id="scrollbox">
+    <br>
+    <span class="jsLog2">Added terms:</span>
+    <div id="scrollbox"></div>
   </div>
 
   <div id="verifyPopup" class="popupDiv">
-
     <div style="background-color: white; height:100%; width: 100%">
       <br>
       <p>It appears this entry exists. Overwrite?</p>
