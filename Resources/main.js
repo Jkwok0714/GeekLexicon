@@ -2,30 +2,10 @@ var storage;
 var storageName = "Geekicon";
 
 var main = function() {
-  function supports_html5_storage() {
-    try {
-      return 'localStorage' in window && window['localStorage'] !== null;
-    } catch (e) {
-      return false;
-    }
-  }
   // console.log(JSON.stringify(storage));
 };
 
-var hidePopups = function() {
-  $('.popupDiv').addClass('invisible');
-}
-
-var displayStoredItem = function(itemName) {
-  var $body = $('#scrollbox');
-  var $textBit = $('<div class="jsLog2">' + itemName + '</div>');
-  $textBit.prependTo($body);
-};
-
-var clearTextFields = function() {
-  $('#wordField').val('');
-  $('#defField').val('');
-};
+//====== Helper Functions======
 
 var jQueryStuff = function() {
   $('#cancelOverwriteButton').on('click', function() {
@@ -39,14 +19,38 @@ var jQueryStuff = function() {
       alert('Attempted to add empty values!\nTerm: ' + term + '\nDefinition: ' + definition);
       return;
     }
+    if (storage.hasOwnProperty(term)) {
+      if (!confirm(term+ ' already exists. Overwrite?')) {
+        return;
+      }
+    } else {
+      displayStoredItem(term);
+    }
     storage[term] = definition;
     clearTextFields();
-    displayStoredItem(term);
     writeStorage();
   });
 
-  $('#removeButton').on('click', () => {
+  $('#searchButton').on('click', () => {
     var term = $('#wordField').val();
+    if (term === '') {
+      alert('Enter a search term!');
+    } else if (storage[term] === undefined) {
+      alert('Term \'' + term + '\' not found!');
+    } else {
+      $('#defField').val(storage[term]);
+    }
+  });
+
+  $('#scrollbox').on('click', '.termButton', function() {
+    var term = $(this).text();
+    // console.log('Clicked a term:', $(this).text());
+    $('#defField').val(storage[term]);
+    $('#wordField').val(term);
+  });
+
+  $('#removeButton').on('click', () => {
+    var term = ($('#wordField').val());
     if (storage[term] === undefined) {
       alert('Term \'' + term + '\' not found!');
     } else {
@@ -59,40 +63,11 @@ var jQueryStuff = function() {
   });
 };
 
-var reddifyPrintout = function(term) {
-  $('.jsLog2:contains(' + term + ')').addClass('reddified');
-}
-
-var clearStorage = function() {
-  storage = {};
-  writeStorage();
-}
-
-var loadStorage = function() {
-  var result = localStorage.getItem(storageName);
-  if (result === undefined || result === null) {
-    console.log('New storage');
-    storage = {};
-  } else {
-    console.log('Load old storage');
-    storage = JSON.parse(result);
-    for (var key in storage) {
-      displayStoredItem(key);
-
-    }
-  }
-}
-
-var writeStorage = function() {
-  localStorage.setItem(storageName, JSON.stringify(storage));
-}
-
-
 //====Make sure this is last==
 $(document).ready(function() {
   loadStorage();
   hidePopups();
-  clearTextFields();
+  initiateTextFields();
   main();
   jQueryStuff();
 });

@@ -10,7 +10,9 @@ p, .jsLog, .uiButton {
   margin: auto;
 }
 
-.jsLog2 {
+.jsLog2, .termButton {
+  border: none;
+  background: none;
   color: #9cbbed;
   font-family: verdana;
   font-size: 10px;
