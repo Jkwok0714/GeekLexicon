@@ -14,10 +14,12 @@
     <p style="color: #9cbbed">A Lexicon of Geekology</p>
     <button class="uiButton" id="addButton">Add</button>
     <button class="uiButton" id="reviseButton">Revise</button>
-    <button class="uiButton" id="searchButton">Lookup</button>
     <button class="uiButton" id="removeButton">Remove</button>
     <hr>
-    <input class="jsLog" type="text" id="searchField" placeholder='Term'><br><br>
+    <input class="jsLog" type="text" id="searchField" placeholder='Search'>
+    <button class="uiButton" id="searchButton">Lookup</button>
+    <hr>
+    <h2 id="termDisplay">...</h2>
     <!-- <input class="jsLog definitionBox" type="text" id="Definition" placeholder='Definition'> -->
     <div class="jsLog2 textField" id="defField" placeholder="Definition..."></div>
     <!-- <div id="scrollbox" style="overflow-y:scroll; height:400px;"> -->
@@ -26,8 +28,8 @@
     <div id="scrollbox" class="textField"></div>
   </div>
 
-  <div id="addTermPopup" class="popupDiv">
-    <div style="background-color: white; height:80%; width: 100%">
+  <div id="addTermPopup" class="popupDiv" style="height: 100%">
+    <div style="background-color: white; height:100%; width: 100%">
       <br>
       <input class="jsLog" type="text" id="wordField" placeholder='Term'><br><br>
       <!-- <input class="jsLog definitionBox" type="text" id="Definition" placeholder='Definition'> -->
@@ -39,7 +41,7 @@
   </div>
 
   <div id="verifyPopup" class="popupDiv">
-    <div style="background-color: white; height:80%; width: 100%">
+    <div style="background-color: white; height:100%; width: 100%">
       <br>
       <p>It appears this entry exists. Overwrite?</p>
       <button class="uiButton" id="confirmOverwriteButton">Overwrite</button>

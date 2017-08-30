@@ -1,5 +1,7 @@
 var storage;
 var storageName = "Geekicon";
+var addOrRevise = 'add';
+var fadeSpeed = 500;
 
 var main = function() {
   // console.log(JSON.stringify(storage));
@@ -9,21 +11,23 @@ var main = function() {
 
 var jQueryStuff = function() {
   $('#cancelButton').on('click', function() {
-    $('.popupDiv').addClass('invisible');
+    $('.popupDiv').hide(fadeSpeed);
   });
 
   $('#addButton').on('click', function() {
-    $('#addTermPopup').removeClass('invisible');
+    $('#addTermPopup').show(fadeSpeed);
+    addOrRevise = 'add';
 
   });
   $('#reviseButton').on('click', function() {
-    console.log($('#defField').text());
+    // console.log($('#defField').text());
     if ($('#defField').text() === '' || $('#defField').text() === undefined) {
       alert('No current term selected! Please select/search a term.');
       return;
     }
-    $('#addTermPopup').removeClass('invisible');
-    $('#wordField').val($('#searchField').val());
+    addOrRevise = 'revise';
+    $('#addTermPopup').show(fadeSpeed);
+    $('#wordField').val($('#termDisplay').text());
     $('#defInputField').val($('#defField').text());
   });
 
@@ -35,17 +39,20 @@ var jQueryStuff = function() {
       alert('Attempted to add empty values!\nTerm: ' + term + '\nDefinition: ' + definition);
       return;
     }
-    if (storage.hasOwnProperty(term)) {
+    if (storage.hasOwnProperty(term) && addOrRevise === 'add') {
       if (!confirm(term+ ' already exists. Overwrite?')) {
         return;
       }
+    } else if (storage.hasOwnProperty(term) && addOrRevise === 'revise') {
+
     } else {
       displayStoredItem(term);
     }
     storage[term] = definition;
     clearTextFields();
     writeStorage();
-    $('#addTermPopup').addClass('invisible');
+    displayTerm(term);
+    $('#addTermPopup').hide(fadeSpeed);
   });
 
   $('#searchButton').on('click', () => {
@@ -55,25 +62,25 @@ var jQueryStuff = function() {
     } else if (storage[term] === undefined) {
       alert('Term \'' + term + '\' not found!');
     } else {
-      $('#defField').text(storage[term]);
+      displayTerm(term);
     }
   });
 
   $('#scrollbox').on('click', '.termButton', function() {
     var term = $(this).text();
     // console.log('Clicked a term:', $(this).text());
-    $('#defField').text(storage[term]);
-    $('#searchField').val(term);
+    displayTerm(term);
   });
 
   $('#removeButton').on('click', () => {
-    var term = ($('#searchField').val());
+    var term = ($('#termDisplay').text());
     if (storage[term] === undefined) {
       alert('Term \'' + term + '\' not found!');
     } else {
       if (confirm('Are you sure you wish to delete entry for ' + term + '?')) {
         delete storage[term];
-        reddifyPrintout(term);
+        initiateTextFields();
+        deemphasizePrintout(term);
         writeStorage();
       }
     }

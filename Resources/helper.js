@@ -1,5 +1,5 @@
-var reddifyPrintout = function(term) {
-  $('.jsLog2:contains(' + term + ')').addClass('reddified');
+var deemphasizePrintout = function(term) {
+  $('.jsLog2:contains(' + term + ')').addClass('translucent');
 }
 
 function supports_html5_storage() {
@@ -10,8 +10,13 @@ function supports_html5_storage() {
   }
 }
 
+var displayTerm = function(term) {
+  $('#defField').text(storage[term]);
+  $('#termDisplay').text(term);
+}
+
 var hidePopups = function() {
-  $('.popupDiv').addClass('invisible');
+  $('.popupDiv').hide();
 }
 
 var displayStoredItem = function(itemName) {
@@ -23,6 +28,7 @@ var displayStoredItem = function(itemName) {
 var clearTextFields = function() {
   $('#wordField').val('');
   $('#defInputField').val('');
+  $('#searchField').val('');
 };
 
 var initiateTextFields = function() {
