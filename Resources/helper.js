@@ -15,6 +15,11 @@ var displayTerm = function(term) {
   $('#termDisplay').text(term);
 }
 
+var showTitle = function() {
+  $('#TitleText').text(title);
+  $('#DescriptionText').text(desc);
+}
+
 var hidePopups = function() {
   $('.popupDiv').hide();
 }
@@ -44,15 +49,23 @@ var loadStorage = function() {
   var result = localStorage.getItem(storageName);
   if (result === undefined || result === null) {
     console.log('New storage');
+    title = 'The Geekicon';
+    desc = 'The Lexicon of Geekology';
     storage = {};
   } else {
     console.log('Load old storage');
     storage = JSON.parse(result);
+    title = localStorage.getItem("GeekiconTitle");
+    desc = localStorage.getItem("GeekiconDesc");
     for (var key in storage) {
       displayStoredItem(key);
-
     }
   }
+}
+
+var writeTitle = function() {
+  localStorage.setItem("GeekiconTitle", title);
+  localStorage.setItem("GeekiconDesc", desc);
 }
 
 var writeStorage = function() {

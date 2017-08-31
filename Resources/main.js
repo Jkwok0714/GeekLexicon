@@ -1,7 +1,13 @@
 var storage;
-var storageName = "Geekicon";
+var storageName = 'Geekicon';
 var addOrRevise = 'add';
 var fadeSpeed = 500;
+var title, desc;
+
+//===== TO DO =======
+//Change title/desc, save, loadStorage
+//Change background image maybe
+
 
 var main = function() {
   // console.log(JSON.stringify(storage));
@@ -10,7 +16,8 @@ var main = function() {
 //====== Helper Functions======
 
 var jQueryStuff = function() {
-  $('#cancelButton').on('click', function() {
+  $('.cancelButton').on('click', function() {
+    console.log('Cancel all the things');
     $('.popupDiv').hide(fadeSpeed);
   });
 
@@ -19,6 +26,15 @@ var jQueryStuff = function() {
     addOrRevise = 'add';
 
   });
+
+  $('#setTitleButton').on('click', function() {
+    $('#setTitlePopup').show(fadeSpeed);
+  });
+
+  $('#setTitleConfirmButton').on('click', function() {
+
+  });
+
   $('#reviseButton').on('click', function() {
     // console.log($('#defField').text());
     if ($('#defField').text() === '' || $('#defField').text() === undefined) {

@@ -10,8 +10,8 @@
 </head>
 <body>
   <div id="mainStuff">
-    <h1>The Geekicon</h1>
-    <p style="color: #9cbbed">A Lexicon of Geekology</p>
+    <h1 id="TitleText">The Geekicon</h1>
+    <p id="DescriptionText" style="color: #9cbbed">A Lexicon of Geekology</p>
     <button class="uiButton" id="addButton">Add</button>
     <button class="uiButton" id="reviseButton">Revise</button>
     <button class="uiButton" id="removeButton">Remove</button>
@@ -26,6 +26,8 @@
     <br>
     <span class="jsLog2">Added terms:</span>
     <div id="scrollbox" class="textField"></div>
+    <br>
+    <button class="uiButton" id="setTitleButton">Set Title/Desc</button>
   </div>
 
   <div id="addTermPopup" class="popupDiv" style="height: 100%">
@@ -36,7 +38,19 @@
       <textarea class="jsLog" id="defInputField" rows="6" cols="50" placeholder="Definition..."></textarea>
       <br>
       <button class="uiButton" id="addTermButton">Add/Revise</button>
-      <button class="uiButton" id="cancelButton">Cancel</button>
+      <button class="uiButton cancelButton" id="">Cancel</button>
+    </div>
+  </div>
+
+  <div id="setTitlePopup" class="popupDiv" style="height: 100%">
+    <div style="background-color: white; height:100%; width: 100%">
+      <br>
+      <input class="jsLog" type="text" id="titleField" placeholder='Title'>
+      <br>
+      <input class="jsLog" type="text" id="descField" placeholder='Description'>
+      <br>
+      <button class="uiButton" id="setTitleConfirmButton">Save</button>
+      <button class="uiButton cancelButton" id="">Cancel</button>
     </div>
   </div>
 
