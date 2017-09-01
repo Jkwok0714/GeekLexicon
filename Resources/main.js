@@ -29,10 +29,18 @@ var jQueryStuff = function() {
 
   $('#setTitleButton').on('click', function() {
     $('#setTitlePopup').show(fadeSpeed);
+    $('#titleField').val(title);
+    $('#descField').val(desc);
   });
 
   $('#setTitleConfirmButton').on('click', function() {
-
+    title = $('#titleField').val();
+    desc = $('#descField').val();
+    $('#TitleText').text(title);
+    $('#DescriptionText').text(desc);
+    localStorage.setItem('GeekiconTitle', title);
+    localStorage.setItem('GeekiconDesc', desc);
+    $('.popupDiv').hide(fadeSpeed);
   });
 
   $('#reviseButton').on('click', function() {

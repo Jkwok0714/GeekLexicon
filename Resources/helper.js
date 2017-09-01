@@ -55,13 +55,26 @@ var loadStorage = function() {
   } else {
     console.log('Load old storage');
     storage = JSON.parse(result);
-    title = localStorage.getItem("GeekiconTitle");
-    desc = localStorage.getItem("GeekiconDesc");
-    for (var key in storage) {
-      displayStoredItem(key);
-    }
+    title = localStorage.getItem('GeekiconTitle');
+    desc = localStorage.getItem('GeekiconDesc');
+    $('#TitleText').text(title);
+    $('#DescriptionText').text(desc);
+    loadSortedKeys();
   }
 }
+
+var loadSortedKeys = function() {
+  var tempStorage = [];
+  for (var key in storage) {
+    tempStorage.push(key);
+  }
+  console.log('pre-sort', tempStorage);
+  tempStorage.sort();
+  console.log('post-sort', tempStorage);
+  for (var i = tempStorage.length - 1; i >= 0; i--) {
+    displayStoredItem(tempStorage[i]);
+  }
+};
 
 var writeTitle = function() {
   localStorage.setItem("GeekiconTitle", title);
